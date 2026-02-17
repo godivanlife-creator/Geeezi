@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍊子 (Geezi) 的專屬網頁</title>
+    <style>
+        :root {
+            --main-orange: #FF8C00;
+            --bg-color: #FFF9F2;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 85%;
+            max-width: 380px;
+            padding: 40px 20px;
+            border-radius: 40px;
+            box-shadow: 0 15px 35px rgba(255, 140, 0, 0.1);
+            text-align: center;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .profile-img {
+            font-size: 80px;
+            width: 140px;
+            height: 140px;
+            line-height: 140px;
+            background: #fff;
+            margin: 0 auto 20px;
+            display: block;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        h1 {
+            color: var(--main-orange);
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .status-msg {
+            font-size: 18px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        .info-box {
+            background: #fdfdfd;
+            border: 1.5px solid #eee;
+            border-radius: 20px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .btn {
+            display: block;
+            padding: 15px;
+            margin: 12px 0;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-call {
+            background: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        .btn-ig {
+            background: var(--main-orange);
+            color: white;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="profile-img">🍊</div>
+    
+    <h1>我是🍊子 (Geezi)</h1>
+
+    <div class="status-msg">
+        📍 我不小心迷路了...<br>請幫我打給我家人 🥺
+    </div>
+
+    <div class="info-box">
+        ✨ <strong>特性：</strong>愛吃、愛搗蛋
+    </div>
+
+    <a href="tel:0925508817" class="btn btn-call">📞 撥打電話給我的家人</a>
+    
+    <a href="https://www.instagram.com/jrt.geezi?igsh=MTBreWw5bThtemJraQ==" target="_blank" class="btn btn-ig">📸 我的 IG 日常</a>
+    
+    <div style="margin-top: 30px; font-size: 12px; color: #bbb;">NFC Smart Tag Powered</div>
+</div>
+
+</body>
+</html>
