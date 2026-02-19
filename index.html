@@ -8,6 +8,7 @@
         :root {
             --main-orange: #FF8C00;
             --bg-color: #FFF9F2;
+            --btn-sms: #007aff;
         }
 
         body {
@@ -73,6 +74,18 @@
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* 簡訊通知按鈕樣式 */
+        .btn-sms {
+            background: var(--btn-sms);
+            color: white;
+            font-size: 18px;
+            box-shadow: 0 6px 15px rgba(0, 122, 255, 0.3);
         }
 
         .btn-call {
@@ -88,6 +101,14 @@
 
         .btn:active {
             transform: scale(0.95);
+        }
+
+        .loading {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--main-orange);
+            font-weight: bold;
         }
 
         @keyframes floating {
@@ -109,12 +130,15 @@
     <h1>我是🍊子 (Geezi)</h1>
 
     <div class="status-msg">
-        📍 我不小心迷路了...<br>請幫我打給我家人 🥺
+        📍 我不小心迷路了...<br>請幫我通報位置 🥺
     </div>
 
     <div class="info-box">
         ✨ <strong>特性：</strong>愛吃、愛搗蛋
     </div>
+
+    <button class="btn btn-sms" onclick="sendSMSLocation()">📍 簡訊通報主人我的位置</button>
+    <div id="loadingText" class="loading">正在定位中...請稍候</div>
 
     <a href="tel:0925508817" class="btn btn-call">📞 撥打電話給我的家人</a>
     
@@ -122,6 +146,42 @@
     
     <div style="margin-top: 30px; font-size: 12px; color: #bbb;">NFC Smart Tag Powered</div>
 </div>
+
+<script>
+    function sendSMSLocation() {
+        const loading = document.getElementById('loadingText');
+        loading.style.display = 'block';
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                
+                // 產生 Google 地圖網址
+                const mapUrl = "http://googleusercontent.com/maps.google.com/9" + lat + "," + lng;
+                
+                // 設定收件人與內容
+                const phoneNumber = "0925508817";
+                const message = encodeURIComponent("【橘子尋寵通報】我發現了🍊子 Geezi！目前位置：" + mapUrl);
+                
+                // 喚起手機簡訊介面
+                window.location.href = "sms:" + phoneNumber + "?body=" + message;
+                loading.style.display = 'none';
+            }, (error) => {
+                loading.style.display = 'none';
+                alert("無法取得精確定位，將直接開啟簡訊對話。");
+                window.location.href = "sms:0925508817?body=" + encodeURIComponent("【橘子尋寵通報】我發現了🍊子 Geezi，請與我聯繫。");
+            }, { 
+                enableHighAccuracy: true, 
+                timeout: 8000, 
+                maximumAge: 0 
+            });
+        } else {
+            alert("您的裝置不支援定位功能。");
+            loading.style.display = 'none';
+        }
+    }
+</script>
 
 </body>
 </html>
