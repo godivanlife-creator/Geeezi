@@ -32,7 +32,6 @@
             animation: slideUp 0.8s ease-out;
         }
 
-        /* 圖片區塊優化：確保 GitHub 照片完美呈現 */
         .profile-img {
             width: 160px;
             height: 160px;
@@ -42,7 +41,7 @@
             border-radius: 50%;
             border: 5px solid white;
             box-shadow: 0 8px 20px rgba(255, 140, 0, 0.2);
-            object-fit: cover; /* 關鍵：確保照片不變形 */
+            object-fit: cover;
             animation: floating 3s ease-in-out infinite;
         }
 
@@ -66,7 +65,7 @@
             border-radius: 20px;
             padding: 15px;
             margin: 20px 0;
-            text-align: left; /* 改為左對齊更有層次 */
+            text-align: left;
         }
 
         .btn {
@@ -128,7 +127,7 @@
 <body>
 
 <div class="container">
-    <img src="https://raw.githubusercontent.com/godivanlife-creator/Geeezi/main/B7454992-0196-4198-842D-6F74D9F02506.jpg" alt="橘子 Geezi" class="profile-img">
+    <img src="https://raw.githubusercontent.com/godivanlife-creator/Geeezi/8f552d9aaace422e84d654b8b6a6c1d5157abbe3/IMG_9382.PNG" alt="橘子 Geezi" class="profile-img">
     
     <h1>我是🍊子 (Geezi)</h1>
 
@@ -141,7 +140,7 @@
         🏠 <strong>居住地：</strong>高雄橋頭
     </div>
 
-    <button class="btn btn-sms" onclick="sendSMSLocation()">📍 簡訊通報我的位置</button>
+    <button class="btn btn-sms" onclick="sendSMSLocation()">📍 簡訊通報主人我的位置</button>
     <div id="loadingText" class="loading">正在精確定位中...請稍候</div>
 
     <a href="tel:0925508817" class="btn btn-call">📞 撥打給我的家人</a>
@@ -163,8 +162,8 @@
                 const lat = position.coords.latitude;
                 const lng = position.coords.longitude;
                 
-                // 產生高精度 Google 地圖網址
-                const mapUrl = "https://www.google.com/maps?q=$0" + lat + "," + lng;
+                // 產生 Google 地圖網址
+                const mapUrl = "https://www.google.com/maps?q=" + lat + "," + lng;
                 
                 const phoneNumber = "0925508817";
                 const message = encodeURIComponent("【橘子尋寵通報】我發現了橘子 Geezi！目前位置：" + mapUrl);
